@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
     "build": "npm run lint && webpack --config webpack.config.js",
-    "watch": "npm run lint && webpack --config webpack.config.js --watch"
+    "watch": "npm run lint && webpack --config webpack.config.js --watch --env DISABLE_WEBSOCKET_SSL=true --env USE_UWP_CLIENT=false"
   },
   "author": "Amazon",
   "license": "Apache 2.0",

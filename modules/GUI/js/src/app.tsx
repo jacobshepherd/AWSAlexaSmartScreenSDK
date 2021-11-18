@@ -336,6 +336,16 @@ export class App extends React.Component<any, IAppState> {
     }
 
     protected onClientMessage(message : IBaseInboundMessage) {
+        if (message.type && (window as any).onCustomEvent) {
+            try {
+                (window as any).onCustomEvent({
+                    type: message.type,
+                    detail: JSON.stringify(message)
+                });
+            } catch (e) {
+                console.log('ERROR', message);
+            }
+        }
         switch (message.type) {
             case 'initRequest': {
                 this.handleInitRequest(message);
